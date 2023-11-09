@@ -1,0 +1,33 @@
+name: Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      coupn_code:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: redeem the code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm ci
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+        env:
+          CYPRESS_COUPON: ${{ inputs.coupn_code }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+        

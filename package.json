@@ -1,0 +1,19 @@
+{
+  "name": "kfc-survey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "cypress open",
+    "start": "cypress run --browser chrome"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.4.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
