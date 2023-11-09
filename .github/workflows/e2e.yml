@@ -26,6 +26,7 @@ jobs:
         env:
           CYPRESS_COUPON: ${{ inputs.coupn_code }}
       - uses: actions/upload-artifact@v3
+        if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
